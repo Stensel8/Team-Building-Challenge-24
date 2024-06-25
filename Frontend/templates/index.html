@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}voor al uw crypto!{% endblock %}
+{% block body %}
+<nav class="container" style="margin-top: 60px;">
+    <div class="row justify-content-center">
+        {% for coin in coins %}
+        <div class="col-12 col-md-8 my-2">
+            <a href="{{ coin.url }}" class="coin-block d-flex align-items-center p-2">
+                <img src="{{ coin.logo }}" alt="{{ coin.symbol }} logo" class="img-fluid" style="width: 50px; height: 50px; margin-right: 10px;">
+                <span>{{ coin.symbol }} - {{ coin.name }}</span>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</nav>
+<section>
+    <div id="cache-warning" class="alert" style="display: none;">
+        <p>Grafieken worden gerenderd...</p>
+        <p id="current-coin"></p>
+        <div class="progress">
+            <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <p id="progress-text">0%</p>
+    </div>
+</section>
+<script>
+    function updateCacheStatus() {
+        fetch('/cache_status')
+            .then(response => response.json())
+            .then(data => {
+                if (data.cache_building) {
+                    document.getElementById('cache-warning').style.display = 'block';
+                    const progress = (data.charts_rendered / data.total_charts) * 100;
+                    document.getElementById('progress-bar').style.width = progress + '%';
+                    document.getElementById('progress-bar').setAttribute('aria-valuenow', progress);
+                    document.getElementById('progress-text').textContent = Math.round(progress) + '%';
+                    document.getElementById('current-coin').textContent = "Renderen: " + data.current_coin;
+                } else {
+                    document.getElementById('cache-warning').style.display = 'none';
+                }
+            });
+    }
+
+    setInterval(updateCacheStatus, 1000);
+    updateCacheStatus();
+</script>
+{% endblock %}

@@ -1,0 +1,17 @@
+# Normaliseer alle tekstbestanden naar LF, in de repo en in de working tree.
+* text=auto eol=lf
+
+# Binaire bestanden nooit aanraken (bevatten legitieme CR-bytes).
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+*.avif  binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.eot   binary
+*.pdf   binary
+*.zip   binary

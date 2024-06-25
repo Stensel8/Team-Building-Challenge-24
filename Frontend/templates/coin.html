@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}{{coin}}{% endblock %}
+{% block body %}
+<header class="text-center my-4">
+    <img src="{{logo}}" alt="{{coin}} logo" class="img-fluid mb-3">
+    <h1>{{symbol}} - {{coin}}</h1>
+</header>
+<section class="text-center">
+    <img src="{{tradings}}" alt="{{coin}} tradings plot" class="img-fluid" style="max-width: 80%; height: auto;">
+</section>
+<section class="text-center mt-2">
+    <button onclick="goHome()" class="btn btn-success">Terug</button>
+</section>
+<script>
+    function goHome() {
+        // Get the base URL of the current website
+        var baseUrl = window.location.origin;
+        // Navigate to the home page
+        window.location.href = baseUrl + '/';
+    }
+</script>
+{% endblock %}

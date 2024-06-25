@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>$ax¢oin | voor al uw crypto!</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/Frontend/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Frontend/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Frontend/assets/favicon-16x16.png">
+  <link rel="manifest" href="/Frontend/assets/site.webmanifest">
+  <link rel="mask-icon" href="/Frontend/assets/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/Frontend/assets/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="assets/img/logo_transparent_compressed.webp" alt="">
+        <h1 class="sitename">$ax¢oin</h1><span>.</span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html#hero" class="">Start</a></li>
+          <li><a href="index.html#about">Over ons</a></li>
+          <li><a href="index.html#services">Diensten</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#pricing">Prijzen</a></li>
+          <li><a href="index.html#team">Team</a></li>
+          <li class="dropdown"><a href="#"><span>Documentatie</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="documentatie.html">Documentatie Overzicht</a></li>
+              <li><a href="#">Python Code</a></li>
+              <li><a href="#">Bash Script</a></li>
+              <li><a href="#">Project Documentatie</a></li>
+            </ul>
+          </li>
+          <li><a href="coins.html" class="active">Coins</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="#" data-bs-toggle="modal" data-bs-target="#coinModal">Bekijk coins</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <style>
+      .btn-wide {
+        min-width: 75px; /* Stel de gewenste minimale breedte in */
+      }
+    </style>
+    
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+      <img src="assets/img/hero-bg.webp" alt="" data-aos="fade-in">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2 class="typewriter" data-aos="fade-up" data-aos-delay="100">
+              <span class="logo-text">P</span>roject <span class="logo-text">$</span>ax¢oin
+            </h2>
+            <p class="typewriter-text" data-aos="fade-up" data-aos-delay="200">Een project gecreëerd door S.T., Y.S. en P.T.</p>
+          </div>
+          <div class="col-lg-5 d-flex align-items-center">
+            <form action="#" class="sign-up-form d-flex w-100" data-aos="fade-up" data-aos-delay="300">
+              <input type="text" class="form-control me-2" placeholder="Voer e-mailadres in">
+              <button type="button" class="btn btn-primary btn-wide" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row align-items-xl-center gy-5">
+          <div class="col-xl-5 content">
+            <h3>Over ons</h3>
+            <h2>$ax¢oin - Repository 24</h2>
+            <p>Wij zijn S.T., Y.S. en P.T. Voor een schoolproject hebben we een OTAP-straat gerealiseerd om een website over de $ax¢oin te hosten.</p>
+            <a href="documentatie.html" class="read-more"><span>Lees meer</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+
+          <div class="col-xl-7">
+            <div class="row gy-4 icon-boxes">
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box">
+                  <i class="bi bi-buildings"></i>
+                  <h3>Waar</h3>
+                  <p>Op het Saxion in Enschede tijdens de studie HBO-ICT</p>
+                </div>
+              </div> <!-- End Icon Box -->
+
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box">
+                  <i class="bi bi-clipboard-pulse"></i>
+                  <h3>Tijd en Methode</h3>
+                  <p>We werken in 4 sprints van 2 weken per sprint, wat neerkomt op een totaal van 8 weken volgens de scrum methode.</p>
+                </div>
+              </div> <!-- End Icon Box -->
+
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box">
+                  <i class="bi bi-command"></i>
+                  <h3>Het team</h3>
+                  <ul>
+                    <li>P.T. - Ontwikkelaar</li>
+                    <li>Y.S. - Accepteerder</li>
+                    <li>S.T. - Productie</li>
+                  </ul>
+                </div>
+              </div> <!-- End Icon Box -->
+
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon-box">
+                  <i class="bi bi-graph-up-arrow"></i>
+                  <h3>Software</h3>
+                  <p>
+                    <strong>GitLab:</strong> Voor continuous deployment, runners en het hosten van het project.<br>
+                    <strong>Cloudflare:</strong> Voor monitoring, beveiliging, tunneling en proxies.<br>
+                    <strong>CryptoDataDownload:</strong> Voor statische, historische CSV-data.<br>
+                    <strong>CoinAPI:</strong> Voor API-data.<br>
+                    <strong>Python:</strong> Als hoofdprogrammeertaal.<br>
+                    <strong>VMware Workstation Pro 17.5.2:</strong> Voor virtualisatie-oplossingen.<br>
+                    <strong>Ubuntu:</strong> Voor de fijne server 22.04 distro.
+                  </p>
+                </div>
+              </div> <!-- End Icon Box -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /About Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <img src="assets/img/stats-bg.avif" alt="" data-aos="fade-in">
+
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Teamleden</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="151" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Projecturen</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="27" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Totaal gemaakte kosten in EUR</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Requirements</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+   <!-- Sectie Diensten -->
+<section id="services" class="services section">
+
+  <!-- Sectie Titel -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Diensten</h2>
+    <p>Enkele diensten die we aanbieden</p>
+  </div><!-- Einde Sectie Titel -->
+
+  <div class="container">
+    <div class="row gy-4">
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-item d-flex">
+          <div class="icon flex-shrink-0"><i class="bi bi-shield-lock"></i></div>
+          <div>
+            <h4 class="title service-title">Veilig Crypto-Handel Platform</h4>
+            <p class="description">Wij bieden een veilig en betrouwbaar platform voor het verhandelen van cryptocurrencies, met de hoogste beveiligingsstandaarden.</p>
+          </div>
+        </div>
+      </div><!-- Einde Dienst Item -->
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-item d-flex">
+          <div class="icon flex-shrink-0"><i class="bi bi-graph-up"></i></div>
+          <div>
+            <h4 class="title service-title">Real-time Koersinformatie</h4>
+            <p class="description">Blijf op de hoogte van de nieuwste koersinformatie en markttrends met onze real-time updates en analyses.</p>
+          </div>
+        </div>
+      </div><!-- Einde Dienst Item -->
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-item d-flex">
+          <div class="icon flex-shrink-0"><i class="bi bi-layout-text-sidebar-reverse"></i></div>
+          <div>
+            <h4 class="title service-title">Gebruiksvriendelijke Interface</h4>
+            <p class="description">Onze gebruiksvriendelijke interface maakt het eenvoudig voor zowel beginners als ervaren handelaren om te navigeren en transacties uit te voeren.</p>
+          </div>
+        </div>
+      </div><!-- Einde Dienst Item -->
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-item d-flex">
+          <div class="icon flex-shrink-0"><i class="bi bi-headset"></i></div>
+          <div>
+            <h4 class="title service-title">Uitgebreide Klantenservice</h4>
+            <p class="description">Ons klantenserviceteam staat 24/7 klaar om u te helpen met al uw vragen en problemen.</p>
+          </div>
+        </div>
+      </div><!-- Einde Dienst Item -->
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+        <div class="service-item d-flex">
+          <div class="icon flex-shrink-0"><i class="bi bi-stars"></i></div>
+          <div>
+            <h4 class="title service-title">Exclusieve Toegang</h4>
+            <p class="description">Krijg exclusieve toegang tot nieuwe cryptocurrencies en functies als eerste, zodat u altijd voorop loopt.</p>
+          </div>
+        </div>
+      </div><!-- Einde Dienst Item -->
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
+        <div class="service-item d-flex">
+          <div class="icon flex-shrink-0"><i class="bi bi-person"></i></div>
+          <div>
+            <h4 class="title service-title">Persoonlijke Accountmanagers</h4>
+            <p class="description">Elite-leden krijgen een persoonlijke accountmanager toegewezen voor op maat gemaakte ondersteuning en advies.</p>
+          </div>
+        </div>
+      </div><!-- Einde Dienst Item -->
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="700">
+        <div class="service-item d-flex">
+          <div class="icon flex-shrink-0"><i class="bi bi-laptop"></i></div>
+          <div>
+            <h4 class="title service-title">Webinars en Trainingssessies</h4>
+            <p class="description">Pro- en Elite-leden krijgen toegang tot exclusieve webinars en trainingssessies om hun handelsvaardigheden te verbeteren.</p>
+          </div>
+        </div>
+      </div><!-- Einde Dienst Item -->
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="800">
+        <div class="service-item d-flex">
+          <div class="icon flex-shrink-0"><i class="bi bi-newspaper"></i></div>
+          <div>
+            <h4 class="title service-title">Nieuws en Analyses</h4>
+            <p class="description">Blijf op de hoogte van het laatste nieuws en diepgaande analyses over de cryptomarkt met onze regelmatige updates.</p>
+          </div>
+        </div>
+      </div><!-- Einde Dienst Item -->
+
+    </div>
+  </div>
+
+</section><!-- Einde Sectie Diensten -->
+
+<!-- CSS -->
+<style>
+  .service-item {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .service-item:hover {
+    transform: translateY(-10px);
+  }
+</style>
+
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Features</h2>
+        <p>Hier kan nog tekst staan.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-lg-5 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+            <h3>Hier kan nog tekst staan.</h3>
+            <p>
+              Ook hier kan dus nog tekst staan. Staat er alleen nog niet. Wat zouden we hier toch eens neerzetten?
+            </p>
+            <a href="#" class="btn btn-get-started align-self-start" data-bs-toggle="modal" data-bs-target="#coinModal">Bekijk coins</a>
+          </div>
+          <div class="col-lg-7 order-1 order-lg-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
+            <div class="image-stack">
+              <img src="assets/img/features-light-1.jpg" alt="" class="stack-front">
+              <img src="assets/img/features-light-2.jpg" alt="" class="stack-back">
+            </div>
+          </div>
+        </div><!-- Features Item -->
+
+        <div class="row gy-4 align-items-stretch justify-content-between features-item ">
+          <div class="col-lg-6 d-flex align-items-center features-img-bg" data-aos="zoom-out">
+            <img src="assets/img/features-light-3.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-5 d-flex justify-content-center flex-column" data-aos="fade-up">
+            <h3>Hier kan nog tekst staan.</h3>
+            <p>Ook hier kan dus nog tekst staan. Staat er alleen nog niet. Heb jij misschien nog een mooi verhaal te verkondigen?.</p>
+            <ul>
+              <li><i class="bi bi-check"></i> <span>Tekstvakje.</span></li>
+              <li><i class="bi bi-check"></i><span> Ook een tekstvakje.</span></li>
+              <li><i class="bi bi-check"></i> <span>Alweer een tekstvakje?</span>.</li>
+            </ul>
+            <a href="#" class="btn btn-get-started align-self-start" data-bs-toggle="modal" data-bs-target="#coinModal">Bekijk coins</a>
+          </div>
+        </div><!-- Features Item -->
+
+      </div>
+
+    </section><!-- /Features Section -->
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing section">
+
+      <!-- Section Title -->
+<div class="container section-title" data-aos="fade-up">
+  <h2>Prijzen</h2>
+  <p>Ons platform biedt verschillende abonnementsopties om aan uw behoeften te voldoen. Kies de tier die het beste bij u past:</p>
+</div><!-- End Section Title -->
+
+<div class="container" data-aos="zoom-in" data-aos-delay="100">
+  <div class="row g-4">
+
+    <div class="col-lg-4">
+      <div class="pricing-item">
+        <h3>Starter Tier</h3>
+        <div class="icon">
+          <i class="bi bi-box"></i>
+        </div>
+        <h4><sup>€</sup>9,99<span> / maand</span></h4>
+        <ul>
+          <li><i class="bi bi-check"></i> <span>Basis toegang tot handelsfuncties</span></li>
+          <li><i class="bi bi-check"></i> <span>Real-time koersinformatie</span></li>
+          <li><i class="bi bi-check"></i> <span>Beperkte klantenservice ondersteuning</span></li>
+          <li class="na"><i class="bi bi-x"></i> <span>Geavanceerde grafieken en analyses</span></li>
+          <li class="na"><i class="bi bi-x"></i> <span>Persoonlijke accountmanager</span></li>
+        </ul>
+        <div class="text-center"><a href="#" class="buy-btn">Koop</a></div>
+      </div>
+    </div><!-- End Pricing Item -->
+
+    <div class="col-lg-4">
+      <div class="pricing-item featured">
+        <h3>Pro Tier</h3>
+        <div class="icon">
+          <i class="bi bi-rocket"></i>
+        </div>
+        <h4><sup>€</sup>29,99<span> / maand</span></h4>
+        <ul>
+          <li><i class="bi bi-check"></i> <span>Uitgebreide handelsmogelijkheden</span></li>
+          <li><i class="bi bi-check"></i> <span>Geavanceerde grafieken en analyses</span></li>
+          <li><i class="bi bi-check"></i> <span>Prioritaire klantenservice</span></li>
+          <li><i class="bi bi-check"></i> <span>Toegang tot exclusieve marktinzichten en tips</span></li>
+          <li class="na"><i class="bi bi-x"></i> <span>Persoonlijke accountmanager</span></li>
+        </ul>
+        <div class="text-center"><a href="#" class="buy-btn">Koop</a></div>
+      </div>
+    </div><!-- End Pricing Item -->
+
+    <div class="col-lg-4">
+      <div class="pricing-item">
+        <h3>Elite Tier</h3>
+        <div class="icon">
+          <i class="bi bi-diamond"></i>
+        </div>
+        <h4><sup>€</sup>59,99<span> / maand</span></h4>
+        <ul>
+          <li><i class="bi bi-check"></i> <span>Alle voordelen van Pro Tier</span></li>
+          <li><i class="bi bi-check"></i> <span>Persoonlijke accountmanager</span></li>
+          <li><i class="bi bi-check"></i> <span>Exclusieve webinars en trainingssessies</span></li>
+          <li><i class="bi bi-check"></i> <span>VIP toegang tot nieuwe functies en crypto's</span></li>
+          <li><i class="bi bi-check"></i> <span>Prioritaire klantenservice</span></li>
+        </ul>
+        <div class="text-center"><a href="#" class="buy-btn">Koop</a></div>
+      </div>
+    </div><!-- End Pricing Item -->
+
+  </div>
+</div>
+
+
+      </div>
+
+    </section><!-- /Faq Section -->
+
+    <!-- Team Section -->
+    <section id="team" class="team section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Team</h2>
+        <p>Het volledige OTAP-team, werkende aan de omgeving voor de $ax¢oin</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-img">
+              <img src="assets/img/team/team-ontwikkeling.jpg" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>P.T.</h4>
+              <span>Ontwikkel-omgeving</span>
+              <p>P.T. heeft zijn zegje nog niet gedaan.</p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="300">
+            <div class="member-img">
+              <img src="assets/img/team/team-acceptatie.jpg" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Y.S.</h4>
+              <span>Acceptatie-Omgeving</span>
+              <p>Y.S. heeft zijn zegje nog niet gedaan.</p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="400">
+            <div class="member-img">
+              <img src="assets/img/team/team-productie.jpg" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>S.T.</h4>
+              <span>Productie-Omgeving</span>
+              <p>Ik vind het leuk om te stoeien met HTML5, CSS3, Bootstrap5, Python en Shellscripts. Het geeft mij voldoening. Dit project was een donders succes! Hoewel ik bijna alles zelf gebeund heb, neem ik dat voor lief. Het resultaat is een platform waar ik ontzettend trots op ben.</p>
+            </div>
+          </div><!-- End Team Member -->
+        </div>
+
+      </div>
+
+    </section><!-- /Team Section -->
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section">
+
+      <img src="assets/img/cta-bg.jpg" alt="">
+
+      <div class="container">
+        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-10">
+            <div class="text-center">
+              <h3>Code bekijken?</h3>
+              <p>Benieuwd geraakt naar onze code? Gelukkig is ons project open-source en via GitLab door te kijken.</p>
+              <a class="cta-btn" href="https://github.com/THectic-NL/Team-Building-Challenge-24">Neem een kijkje</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Call To Action Section -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+
+      <div class="container">
+
+        <div class="row align-items-center">
+
+          <div class="col-lg-5 info" data-aos="fade-up" data-aos-delay="100">
+            <h3>Wat klanten zeggen</h3>
+            <p>
+              Hiernaast kunt u enkele reviews van onze tevreden klanten lezen. Ontdek waarom steeds meer mensen kiezen voor ons platform om hun crypto's te verhandelen.
+            </p>
+          </div>
+
+          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="swiper">
+              <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 5000
+                  },
+                  "slidesPerView": "auto",
+                  "pagination": {
+                    "el": ".swiper-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                  }
+                }
+              </script>
+              <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <div class="d-flex">
+                      <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img flex-shrink-0" alt="">
+                      <div>
+                        <h3>Saul Goodman</h3>
+                        <h4>Ceo &amp; Founder</h4>
+                        <div class="stars">
+                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>De gebruiksvriendelijke interface maakt het kopen en verkopen van crypto's super eenvoudig. Ik ben echt onder de indruk!</span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <div class="d-flex">
+                      <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img flex-shrink-0" alt="">
+                      <div>
+                        <h3>Sara Wilsson</h3>
+                        <h4>Designer</h4>
+                        <div class="stars">
+                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>De actuele koersinformatie is altijd up-to-date, wat me helpt slimme investeringsbeslissingen te nemen.</span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <div class="d-flex">
+                      <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img flex-shrink-0" alt="">
+                      <div>
+                        <h3>Jena Karlis</h3>
+                        <h4>Store Owner</h4>
+                        <div class="stars">
+                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>Het platform biedt een veilige en betrouwbare manier om met crypto's te handelen. Ik voel me hier helemaal thuis.</span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <div class="d-flex">
+                      <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img flex-shrink-0" alt="">
+                      <div>
+                        <h3>Matt Brandon</h3>
+                        <h4>Freelancer</h4>
+                        <div class="stars">
+                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>Fantastische klantenservice en snelle transacties. Dit is precies wat ik zocht in een crypto-platform.</span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <div class="d-flex">
+                      <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img flex-shrink-0" alt="">
+                      <div>
+                        <h3>John Larson</h3>
+                        <h4>Entrepreneur</h4>
+                        <div class="stars">
+                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>Ik waardeer echt de brede selectie aan crypto's die beschikbaar zijn. De groene kleur van de website geeft het een frisse en vertrouwde uitstraling. Geweldig platform!</span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">$ax¢oin</span>
+          </a>
+          <p>Een nieuw bedrijf heeft een cryptocoin ontwikkeld genaamd $ax¢oin. Ze bouwen een website waar klanten kunnen inloggen, crypto’s kunnen kopen en verkopen, actuele koersen kunnen volgen, en nieuwsberichten kunnen lezen. Een investeerder helpt om $ax¢oin bij het grote publiek te introduceren.
+          </p>
+          <p><strong>(Dit is een fictieve website. Neem dit met een flinke korrel zout, a.u.b.)</strong></p>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Relevante Links</h4>
+          <ul>
+            <li><a href="https://github.com/THectic-NL/Team-Building-Challenge-24">GitLab</a></li>
+            <li><a href="https://www.saxion.nl/">Saxion homepage</a></li>
+            <li><a href="#">Hier kan een link staan</a></li>
+            <li><a href="#">Hier kan een link staan</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Overig</h4>
+          <ul>
+            <li><a href="#">Hier kan een link staan</a></li>
+            <li><a href="#">Hier kan een link staan</a></li>
+            <li><a href="#">Hier kan een link staan</a></li>
+            <li><a href="#">Hier kan een link staan</a></li>
+            <li><a href="#">Hier kan een link staan</a></li>
+          </ul>
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>
+        © <span>Copyright</span> <strong class="sitename">$ax¢oin B6</strong> <span> - 2024. Alle rechten voorbehouden. De Bootstrap logo's en andere gerelateerde materialen zijn eigendom van Bootstrap. We hebben Bootstrap versie 5.3.3 gebruikt om deze website te bouwen. We hebben een licentie om deze code te mogen gebruiken. Bekijk de <a href="LICENSE.txt" class="license-link">Licentie</a>.
+        </p>         
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Niet geïmplementeerd!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Sorry, deze functie is (nog) niet geïmplementeerd. Wilt u in plaats daarvan naar de coins gaan?
+          <div class="mt-3">
+            <a class="btn btn-primary btn-getstarted" href="#" data-bs-toggle="modal" data-bs-target="#coinModal">Naar handelsplatform</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coin Modal -->
+  <div class="modal fade" id="coinModal" tabindex="-1" aria-labelledby="coinModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="coinModalLabel">Welke coinpagina wilt u zien?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <button type="button" class="btn btn-primary btn-block" onclick="window.location.href='http://192.168.20.102:80'">Intern</button>
+          <button type="button" class="btn btn-secondary btn-block" onclick="window.location.href='http://saxcoin-b6.online'">Extern</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

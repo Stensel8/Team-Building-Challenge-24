@@ -1,0 +1,142 @@
+stages:
+  - pull-repository
+  - detect-environment
+  - deploy-backend
+  - test-backend
+  - deploy-frontend
+  - test-frontend
+  - deploy-loadbalancer
+  - test-loadbalancer
+  - reload-hosting
+
+variables:
+  DETECT_ENVIRONMENT_SCRIPT: '/root/24/scripts/detect_environment.sh'
+  DEPLOY_BACKEND_SCRIPT: '/root/24/scripts/run_back-end.sh'
+  TEST_BACKEND_SCRIPT: '/root/24/scripts/test_back-end.sh'
+  DEPLOY_FRONTEND_SCRIPT: '/root/24/scripts/run_front-end.sh'
+  TEST_FRONTEND_SCRIPT: '/root/24/scripts/test_front-end.sh'
+  DEPLOY_LOADBALANCER_SCRIPT: '/root/24/scripts/deploy_load-balancer.sh'
+  TEST_LOADBALANCER_SCRIPT: '/root/24/scripts/test_loadbalancer.sh'
+  RELOAD_HOSTING_SCRIPT: '/root/24/scripts/reload_hosting.sh'
+  GIT_REPO_URL: 'git@gitlab.com:saxion.nl/hbo-ict/1.4-project-team-building-challenge-infra/opdracht/ehi1v.ib/24.git'
+  GIT_BRANCH: 'productie'
+  LOAD_BALANCER_IP: '192.168.20.102'
+
+pull-repository:
+  stage: pull-repository
+  tags:
+    - runner-productie
+  script:
+    - if [ -d "/root/24" ]; then rm -rf /root/24; fi
+    - git clone --recursive --branch $GIT_BRANCH $GIT_REPO_URL /root/24
+
+detect-servers:
+  stage: detect-environment
+  tags:
+    - runner-productie 
+  script:
+    - $DETECT_ENVIRONMENT_SCRIPT
+  artifacts:
+    paths:
+      - backend_servers.txt
+      - frontend_servers.txt
+
+deploy-backend:
+  stage: deploy-backend
+  tags:
+    - runner-productie
+  dependencies:
+    - detect-servers
+  script:
+    - 'RUNNING_BACKEND_SERVERS=$(cat backend_servers.txt)'
+    - 'echo "RUNNING_BACKEND_SERVERS: $RUNNING_BACKEND_SERVERS"'
+    - |
+      for server in $RUNNING_BACKEND_SERVERS; do
+        echo -e "\e[34mDeploying backend to server $server...\e[0m";
+        rsync -avz --delete /root/24/ root@$server:/root/24/ || echo -e "\e[31mFailed to copy files to $server\e[0m";
+        ssh root@$server 'bash -s' < /root/24/scripts/run_back-end.sh 2>&1 | tee /dev/tty || echo -e "\e[31mFailed to execute script on $server\e[0m";
+      done
+  artifacts:
+    paths:
+      - backend_servers.txt
+
+test-backend:
+  stage: test-backend
+  tags:
+    - runner-productie
+  dependencies:
+    - deploy-backend
+  script:
+    - 'RUNNING_BACKEND_SERVERS=$(cat backend_servers.txt)'
+    - |
+      for server in $RUNNING_BACKEND_SERVERS; do
+        echo "Testing backend server $server on port 5000...";
+        if curl -s --head "http://$server:5000" | grep "200 OK" > /dev/null; then
+          echo "Server $server is responding on port 5000";
+        else
+          echo "Server $server is NOT responding on port 5000";
+          exit 1;
+        fi;
+      done
+
+deploy-frontend:
+  stage: deploy-frontend
+  tags:
+    - runner-productie
+  dependencies:
+    - detect-servers
+  script:
+    - 'RUNNING_FRONTEND_SERVERS=$(cat frontend_servers.txt)'
+    - 'echo "RUNNING_FRONTEND_SERVERS: $RUNNING_FRONTEND_SERVERS"'
+    - |
+      for server in $RUNNING_FRONTEND_SERVERS; do
+        echo -e "\e[34mDeploying frontend to server $server...\e[0m";
+        rsync -avz --delete /root/24/ root@$server:/root/24/ || echo -e "\e[31mFailed to copy files to $server\e[0m";
+        ssh root@$server 'bash -s' < /root/24/scripts/run_front-end.sh 2>&1 | tee /dev/tty || echo -e "\e[31mFailed to execute script on $server\e[0m";
+      done
+  artifacts:
+    paths:
+      - frontend_servers.txt
+
+test-frontend:
+  stage: test-frontend
+  tags:
+    - runner-productie
+  dependencies:
+    - deploy-frontend
+  script:
+    - 'RUNNING_FRONTEND_SERVERS=$(cat frontend_servers.txt)'
+    - |
+      for server in $RUNNING_FRONTEND_SERVERS; do
+        for port in 8080 8079; do
+          echo "Testing frontend server $server on port $port...";
+          if curl -s --head "http://$server:$port" | grep "200 OK" > /dev/null; then
+            echo "Server $server is responding on port $port";
+          else
+            echo "Server $server is NOT responding on port $port";
+            exit 1;
+          fi;
+        done;
+      done
+
+deploy-loadbalancer:
+  stage: deploy-loadbalancer
+  tags:
+    - runner-productie
+  script:
+    - rsync -avz --delete /root/24/ root@$LOAD_BALANCER_IP:/root/24/ || echo -e "\e[31mFailed to copy files to load balancer\e[0m"
+    - ssh root@$LOAD_BALANCER_IP 'bash -s' < /root/24/scripts/deploy_load-balancer.sh 2>&1 | tee /dev/stdout || echo -e "\e[31mFailed to execute script on load balancer\e[0m"
+
+test-loadbalancer:
+  stage: test-loadbalancer
+  tags:
+    - runner-productie
+  script:
+    - ssh root@$LOAD_BALANCER_IP 'bash -s' < /root/24/scripts/test_loadbalancer.sh 2>&1 | tee /dev/tty || echo -e "\e[31mFailed to execute script on load balancer\e[0m"
+
+reload-hosting:
+  stage: reload-hosting
+  tags:
+    - runner-productie
+  script:
+    - ssh root@$LOAD_BALANCER_IP "bash -s" < /root/24/scripts/reload_hosting.sh 2>&1 | tee /dev/tty || echo -e "\e[31mFailed to execute script on load balancer\e[0m"

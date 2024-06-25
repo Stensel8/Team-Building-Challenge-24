@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" width="880" height="460" role="img" aria-label="TeamBuilding 24">
+  <rect width="880" height="460" fill="#282828"/>
+  <g transform="translate(440 158)">
+    <rect x="-80" y="-58" width="160" height="100" rx="10" fill="none" stroke="#eae0d0" stroke-width="7"/>
+    <path d="M-112 56 L-92 44 L92 44 L112 56 Z" fill="#eae0d0"/>
+  </g>
+  <text x="440" y="306" text-anchor="middle" fill="#eae0d0"
+        font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="72" font-weight="700"
+        letter-spacing="-1">TeamBuilding 24</text>
+  <rect x="380" y="336" width="120" height="3" fill="#eae0d0" opacity="0.4"/>
+  <text x="440" y="380" text-anchor="middle" fill="#eae0d0" opacity="0.65"
+        font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="21">Saxion HBO-ICT &#183; Project Team Building Challenge Infra</text>
+  <text x="440" y="410" text-anchor="middle" fill="#eae0d0" opacity="0.45"
+        font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="19">2023 &#8211; 2024</text>
+</svg>
