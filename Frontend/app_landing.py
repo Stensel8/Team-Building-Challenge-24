@@ -7,6 +7,14 @@ from os import getenv
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+def sanitize_for_log(message: str) -> str:
+    """Strip CR/LF so user input can never forge extra log lines."""
+    return message.replace('\r', '').replace('\n', ' ')
+
+# Only enable the Werkzeug debugger when explicitly asked for: it exposes an
+# interactive console that allows arbitrary code execution.
+DEBUG = getenv('FLASK_DEBUG', '0').lower() in ('1', 'true', 'yes')
+
 app = Flask(__name__, static_folder='landingpage', static_url_path='')
 
 # Get the backend servers from environment variables and split them into a list
@@ -24,9 +32,9 @@ def serve_index():
 
 @app.route('/<path:path>')
 def serve_file_in_dir(path):
-    logger.debug(f'Serving file: {path}')
+    logger.debug(sanitize_for_log(f'Serving file: {path}'))
     return send_from_directory(app.static_folder, path)
 
 if __name__ == "__main__":
     logger.debug("Starting landing page server")
-    app.run(port=8079, debug=True)
+    app.run(port=8079, debug=DEBUG)

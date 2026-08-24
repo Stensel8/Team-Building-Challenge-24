@@ -1,6 +1,7 @@
 import random
 import logging
-from flask import Flask, escape, render_template, url_for, jsonify
+import re
+from flask import Flask, abort, escape, render_template, url_for, jsonify
 import requests
 from os import getenv, mkdir, path
 from matplotlib.figure import Figure
@@ -12,6 +13,24 @@ import time
 # Setup logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+
+def sanitize_for_log(message: str) -> str:
+    """Strip CR/LF so user input can never forge extra log lines."""
+    return message.replace('\r', '').replace('\n', ' ')
+
+# Coin symbols are used to build cache filenames, so restrict them to plain
+# alphanumerics: anything containing '/' or '..' could otherwise escape CACHE_DIR.
+COIN_SYMBOL_RE = re.compile(r'[A-Za-z0-9]{1,15}')
+
+def validate_symbol(symbol: str) -> str:
+    """Return `symbol` unchanged, or raise if it is not a plain coin symbol."""
+    if not COIN_SYMBOL_RE.fullmatch(symbol):
+        raise ValueError('invalid coin symbol')
+    return symbol
+
+# Only enable the Werkzeug debugger when explicitly asked for: it exposes an
+# interactive console that allows arbitrary code execution.
+DEBUG = getenv('FLASK_DEBUG', '0').lower() in ('1', 'true', 'yes')
 
 app = Flask(__name__)
 
@@ -42,7 +61,7 @@ class Trading:
         tradings = Trading.tradings.get(symbol, None)
         if tradings is None:
             tradings = []
-            logger.debug(f"Fetching trading data for {symbol}")
+            logger.debug(sanitize_for_log(f"Fetching trading data for {symbol}"))
             try:
                 backend = random.choice(BACKENDS)  # Choose a random backend
                 tradings_data = requests.get(backend + '/trading/' + escape(symbol))
@@ -59,12 +78,13 @@ class Trading:
                     tradings.append(trading)
                 Trading.tradings[symbol] = tradings
             except requests.RequestException as e:
-                logger.error(f"Error fetching trading data for {symbol}: {e}")
+                logger.error(sanitize_for_log(f"Error fetching trading data for {symbol}: {e}"))
         return tradings
 
     @staticmethod
     def get_graph(symbol: str) -> str:
         """Create a trading graph of the given coin `symbol` and return the filename if it doesn't exist already."""
+        symbol = validate_symbol(symbol)
         plot_name = f'{symbol}-tradings.webp'
         file_name = f'{CACHE_DIR}/{plot_name}'
         if not path.exists(CACHE_DIR):
@@ -74,7 +94,7 @@ class Trading:
             if not path.exists(file_name):
                 global current_coin, charts_rendered
                 current_coin = symbol
-                logger.debug(f"Creating graph for {symbol}")
+                logger.debug(sanitize_for_log(f"Creating graph for {symbol}"))
                 try:
                     figure = Figure(figsize=(10, 6))
                     plot = figure.add_subplot()
@@ -102,10 +122,10 @@ class Trading:
                     figure.autofmt_xdate()
                     figure.savefig(file_name, format='webp')
                     charts_rendered += 1
-                    logger.debug(f"Rendered {symbol}: |{file_name}|{CACHE_DIR}|{plot_name}|")
+                    logger.debug(sanitize_for_log(f"Rendered {symbol}: |{file_name}|{CACHE_DIR}|{plot_name}|"))
                     logger.debug(f"Progress: {charts_rendered}/{total_charts} ({(charts_rendered/total_charts)*100:.2f}%)")
                 except Exception as e:
-                    logger.error(f"Error creating graph for {symbol}: {e}")
+                    logger.error(sanitize_for_log(f"Error creating graph for {symbol}: {e}"))
         return f'/static/cache/{plot_name}'
 
 class Coin:
@@ -162,8 +182,12 @@ def create_cache():
 
             while not queue.empty():
                 symbol = queue.get()
-                Trading.get_graph(symbol)
-                queue.task_done()
+                try:
+                    Trading.get_graph(symbol)
+                except ValueError:
+                    logger.warning(sanitize_for_log(f"Skipping invalid coin symbol: {symbol}"))
+                finally:
+                    queue.task_done()
     finally:
         with cache_lock:
             cache_building = False
@@ -181,8 +205,11 @@ def home():
 
 @app.route('/coin/<symbol>', methods=['GET'])
 def get_coin(symbol):
-    coin = Coin.get_coins()[symbol]
-    plot = Trading.get_graph(symbol)
+    coin = Coin.get_coins().get(symbol)
+    if coin is None:
+        abort(404)
+    # Use the symbol as the backend reported it, not the raw request value.
+    plot = Trading.get_graph(coin.symbol)
     return render_template('coin.html', coin=coin.name, symbol=coin.symbol, logo=coin.logo, tradings=plot)
 
 @app.route('/cache_status', methods=['GET'])
@@ -196,4 +223,4 @@ def cache_status():
 
 if __name__ == "__main__":
     logger.debug("Starting frontend")
-    app.run(port=8080, debug=True)
+    app.run(port=8080, debug=DEBUG)

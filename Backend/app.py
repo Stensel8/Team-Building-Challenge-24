@@ -1,5 +1,10 @@
 from flask import Flask, jsonify, request
 from crypto_coins import CryptoCoin
+from os import getenv
+
+# Only enable the Werkzeug debugger when explicitly asked for: it exposes an
+# interactive console that allows arbitrary code execution.
+DEBUG = getenv('FLASK_DEBUG', '0').lower() in ('1', 'true', 'yes')
 
 # Create a Flask app
 app = Flask(__name__)
@@ -24,4 +29,4 @@ def get_coin_trading(code):
 
 if __name__ == "__main__":
     print("Starting backend")
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=DEBUG)
