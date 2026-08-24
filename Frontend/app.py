@@ -1,9 +1,10 @@
 import random
 import logging
 import re
-from flask import Flask, abort, escape, render_template, url_for, jsonify
+from flask import Flask, abort, render_template, url_for, jsonify
 import requests
 from os import getenv, mkdir, path
+from urllib.parse import quote
 from matplotlib.figure import Figure
 import matplotlib.dates as mdates
 from threading import Thread, Lock
@@ -64,7 +65,7 @@ class Trading:
             logger.debug(sanitize_for_log(f"Fetching trading data for {symbol}"))
             try:
                 backend = random.choice(BACKENDS)  # Choose a random backend
-                tradings_data = requests.get(backend + '/trading/' + escape(symbol))
+                tradings_data = requests.get(backend + '/trading/' + quote(symbol, safe=''))
                 tradings_data.raise_for_status()  # Check if the request was successful
                 for trading_data in tradings_data.json():
                     trading = Trading(
